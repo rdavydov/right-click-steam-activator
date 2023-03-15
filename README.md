@@ -1,6 +1,8 @@
-# Right-click Steam Activator
+# ![Icon](https://github.com/rdavydov/right-click-steam-activator/blob/main/images/ico32.png?raw=true) Right-click Steam Activator
 
 Browser extension that allows to select/mark a Steam key and quickly activate it through the right-click context menu
+
+<img src="https://github.com/rdavydov/right-click-steam-activator/blob/main/right_click_steam_activator_browser_extension_icon.png?raw=true" width=320>
 
 You already need to be logged in on the Steam Web Page!
 
