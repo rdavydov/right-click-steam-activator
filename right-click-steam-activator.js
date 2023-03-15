@@ -39,13 +39,13 @@ function activatekey(info) {
                                 alert("Invalid key: " + _key);
                                 return;
                             case 15:
-                                alert("Somebody already activated this code: " + data.purchase_receipt_info.line_items[0].line_item_description);
+                                alert("Somebody already activated this code for: " + data.purchase_receipt_info.line_items[0].line_item_description);
                                 return;
                             case 13:
                                 alert("Regional restrictions: " + data.purchase_receipt_info.line_items[0].line_item_description);
                                 return;
                             case 24:
-                                alert("Missing main game: " + data.purchase_receipt_info.line_items[0].line_item_description);
+                                alert("Missing base game: " + data.purchase_receipt_info.line_items[0].line_item_description);
                                 return;
                             case 36:
                                 alert("Need a PS3?");
@@ -54,7 +54,7 @@ function activatekey(info) {
                                 alert("This is the recharge code!");
                                 return;
                             default:
-                                alert("purchase_result_details: " + purchase_result_details);
+                                alert("purchase_result_details: " + data.purchase_result_details);
                                 break;
                         }
                     })
