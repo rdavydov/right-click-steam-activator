@@ -1,5 +1,11 @@
 # ![Icon](https://github.com/rdavydov/right-click-steam-activator/blob/main/images/ico32.png?raw=true) Right-click Steam Activator
 
+![](https://img.shields.io/github/license/rdavydov/right-click-steam-activator?style=for-the-badge&logo=github&color=purple&logoColor=thistle)
+![](https://img.shields.io/github/stars/rdavydov/right-click-steam-activator?style=for-the-badge&logo=github&color=darkblue&logoColor=aquamarine)
+![](https://img.shields.io/github/forks/rdavydov/right-click-steam-activator?style=for-the-badge&logo=github&color=darkblue&logoColor=aquamarine)
+![](https://img.shields.io/github/watchers/rdavydov/right-click-steam-activator?style=for-the-badge&logo=github&color=darkblue&logoColor=aquamarine)
+![](https://img.shields.io/github/last-commit/rdavydov/right-click-steam-activator?style=for-the-badge&logo=github&color=darkgreen&logoColor=lightgreen)
+
 Browser extension that allows to select/mark a Steam key and quickly activate it through the right-click context menu.
 
 <img src="https://github.com/rdavydov/right-click-steam-activator/blob/main/right_click_steam_activator_browser_extension_icon.png?raw=true" width=320>
