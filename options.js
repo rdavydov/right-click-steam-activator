@@ -38,7 +38,7 @@ optionsForm.addEventListener('submit', (event) => {
             // Update existing info box
             infoBox.classList.remove('error');
             infoBox.classList.add('success');
-            infoBox.textContent = 'Cookie values are set for the extension and for the Steam website.';
+            infoBox.textContent = 'Cookie values are set for the extension and for the Steam store.';
         });
     } else {
         chrome.storage.sync.set({ sessionid: "", steamLoginSecure: "" }, () => {
@@ -47,7 +47,7 @@ optionsForm.addEventListener('submit', (event) => {
             // Update existing info box
             infoBox.classList.remove('success');
             infoBox.classList.add('error');
-            infoBox.textContent = 'Cookie values are cleared for the extension. We\'ll get them from the Steam website.';
+            infoBox.textContent = 'Cookie values are cleared for the extension. We\'ll get them from the Steam store.';
         });
     }
 });

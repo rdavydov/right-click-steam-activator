@@ -21,7 +21,7 @@ function activatekey(info) {
                     console.log("Using user-supplied sessionid cookie:", sessionid);
                     resolve(sessionid);
                 } else {
-                    console.log("User-supplied sessionid cookie not found in storage. Getting it from the Steam website.");
+                    console.log("User-supplied sessionid cookie was not found in the storage. Getting it from the Steam store.");
                     // Retrieve sessionid cookie from https://store.steampowered.com/
                     chrome.cookies.get(
                         { url: "https://store.steampowered.com/", name: "sessionid" },
@@ -31,7 +31,7 @@ function activatekey(info) {
                                 console.log("Retrieved sessionid cookie from https://store.steampowered.com/:", sessionid);
                                 resolve(sessionid);
                             } else {
-                                const error = new Error("sessionid cookie not found!");
+                                const error = new Error("sessionid cookie was not found!");
                                 alert(error);
                                 reject(error);
                             }
@@ -56,7 +56,7 @@ function activatekey(info) {
             })
                 .then(response => response.json())
                 .catch(error => {
-                    alert("Failed to parse response as JSON. Most likely you are not logged in to Steam in the browser.");
+                    alert("Failed to parse response as JSON. Most likely you are not logged in to the Steam store.");
                     console.error("Failed to parse response as JSON: " + error);
                     throw error;
                 })
@@ -80,7 +80,7 @@ function activatekey(info) {
 
                     switch (data.purchase_result_details) {
                         case 53:
-                            alert("Temporary ban from Steam. Ban should lift in 45-60 minutes.");
+                            alert("Temporary ban from Steam. It should vanish in 45-60 minutes.");
                             return;
                         case 9:
                             alert("Already own: " + data.purchase_receipt_info.line_items[0].line_item_description);
@@ -98,10 +98,10 @@ function activatekey(info) {
                             alert("Missing base game: " + data.purchase_receipt_info.line_items[0].line_item_description);
                             return;
                         case 36:
-                            alert("Need a PS3?");
+                            alert("Need a PS3?"); // ?
                             return;
                         case 50:
-                            alert("This is the recharge code!");
+                            alert("This is the recharge code!"); // ?
                             return;
                         default:
                             alert("purchase_result_details: " + data.purchase_result_details);
