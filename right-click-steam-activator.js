@@ -1,3 +1,14 @@
+function notify(message) {
+    console.log("Notifying user: ", message);
+    chrome.notifications.create({
+        "type": "basic",
+        "iconUrl": "images/ico128.png",
+        // "iconUrl": browser.extension.getURL("images/ico128.png"),
+        "title": "Right-click Steam Activator",
+        "message": message
+    });
+}
+
 function activatekey(info) {
     // const _re = new RegExp('^[0-9A-Z]{4,7}-[0-9A-Z]{4,7}-[0-9A-Z]{4,7}(?:(?:-[0-9A-Z]{4,7})?(?:-[0-9A-Z]{4,7}))?$', 'i');
 
@@ -32,7 +43,7 @@ function activatekey(info) {
                                 resolve(sessionid);
                             } else {
                                 const error = new Error("sessionid cookie was not found!");
-                                alert(error);
+                                notify(error);
                                 reject(error);
                             }
                         }
@@ -56,23 +67,23 @@ function activatekey(info) {
             })
                 .then(response => response.json())
                 .catch(error => {
-                    alert("Failed to parse response as JSON. Most likely you are not logged in to the Steam store.");
+                    notify("Failed to parse response as JSON. Most likely you are not logged in to the Steam store.");
                     console.error("Failed to parse response as JSON: " + error);
                     throw error;
                 })
                 .then(data => {
                     switch (data.success) {
                         case 1:
-                            alert("Activated: " + data.purchase_receipt_info.line_items[0].line_item_description);
+                            notify("Activated: " + data.purchase_receipt_info.line_items[0].line_item_description);
                             return;
                         case 21:
-                            alert("ERROR! Not a valid sessionid: " + sessionid);
+                            notify("ERROR! Not a valid sessionid: " + sessionid);
                             return;
                         case 2:
                             console.log("'success' is 2. Key is not activated.")
                             break;
                         default:
-                            alert("success: " + data.success);
+                            notify("success: " + data.success);
                             break;
                     }
 
@@ -80,31 +91,31 @@ function activatekey(info) {
 
                     switch (data.purchase_result_details) {
                         case 53:
-                            alert("Temporary ban from Steam. It should vanish in 45-60 minutes.");
+                            notify("Temporary ban from Steam. It should vanish in 45-60 minutes.");
                             return;
                         case 9:
-                            alert("Already own: " + data.purchase_receipt_info.line_items[0].line_item_description);
+                            notify("Already own: " + data.purchase_receipt_info.line_items[0].line_item_description);
                             return;
                         case 14:
-                            alert("Invalid key: " + _key);
+                            notify("Invalid key: " + _key);
                             return;
                         case 15:
-                            alert("Somebody already activated this code for: " + data.purchase_receipt_info.line_items[0].line_item_description);
+                            notify("Somebody already activated this code for: " + data.purchase_receipt_info.line_items[0].line_item_description);
                             return;
                         case 13:
-                            alert("Regional restrictions: " + data.purchase_receipt_info.line_items[0].line_item_description);
+                            notify("Regional restrictions: " + data.purchase_receipt_info.line_items[0].line_item_description);
                             return;
                         case 24:
-                            alert("Missing base game: " + data.purchase_receipt_info.line_items[0].line_item_description);
+                            notify("Missing base game: " + data.purchase_receipt_info.line_items[0].line_item_description);
                             return;
                         case 36:
-                            alert("Need a PS3?"); // ?
+                            notify("Need a PS3?"); // ?
                             return;
                         case 50:
-                            alert("This is the recharge code!"); // ?
+                            notify("This is the recharge code!"); // ?
                             return;
                         default:
-                            alert("purchase_result_details: " + data.purchase_result_details);
+                            notify("purchase_result_details: " + data.purchase_result_details);
                             break;
                     }
                 })
@@ -115,7 +126,7 @@ function activatekey(info) {
                 });
         });
     } else {
-        alert("ERROR! Not a valid Steam key.");
+        notify("Not a valid Steam key.");
     }
 }
 
