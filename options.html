@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Steam Key Activator Options</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            padding: 20px;
+            /* text-shadow: #fff -1px 1px; */
+        }
+
+        h1 {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            color: #444;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .form-group input[type="text"],
+        .form-group textarea {
+            padding: 10px;
+            font-size: 1.2em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-group input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background-color: #555;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .form-group input[type="submit"]:hover {
+            background-color: #444;
+        }
+
+        .error {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 10px;
+            background-color: #904d00;
+            color: #fff;
+            font-weight: bold;
+            /* text-shadow: #000 -1px 1px; */
+            border-radius: 5px;
+        }
+
+        .success {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            color: #fff;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Options</h1>
+    <form id="options-form">
+        <div class="form-group">
+            <label for="sessionid-input">Session ID:</label>
+            <input type="text" id="sessionid-input" name="sessionid" placeholder="Enter your Steam session ID">
+        </div>
+        <div class="form-group">
+            <label for="steamLoginSecure-input">Steam Login Secure:</label>
+            <textarea id="steamLoginSecure-input" name="steamLoginSecure" rows="8"
+                placeholder="Enter your Steam login secure value"></textarea>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Save Options">
+        </div>
+    </form>
+    <div id="info-box"></div>
+    <script src="options.js"></script>
+</body>
+
+</html>
