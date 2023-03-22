@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Right-click Steam Activator",
   "description": "Use the right-click menu to activate selected Steam key",
-  "version": "2.1",
+  "version": "2.2",
   "permissions": [
     "contextMenus",
     "cookies",
