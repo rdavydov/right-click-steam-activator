@@ -74,7 +74,7 @@ function activatekey(info) {
                 .then(data => {
                     switch (data.success) {
                         case 1:
-                            notify("Activated: " + data.purchase_receipt_info.line_items[0].line_item_description);
+                            notify("Activated: " + data?.purchase_receipt_info?.line_items[0]?.line_item_description);
                             return;
                         case 21:
                             notify("ERROR! Not a valid sessionid: " + sessionid);
@@ -83,30 +83,30 @@ function activatekey(info) {
                             console.log("'success' is 2. Key is not activated.")
                             break;
                         default:
-                            notify("success: " + data.success);
+                            notify("success: " + data?.success);
                             break;
                     }
 
                     // const resultDetail = data.purchase_receipt_info.result_detail;
 
-                    switch (data.purchase_result_details) {
+                    switch (data?.purchase_result_details) {
                         case 53:
                             notify("Temporary ban from Steam. It should vanish in 45-60 minutes.");
                             return;
                         case 9:
-                            notify("Already own: " + data.purchase_receipt_info.line_items[0].line_item_description);
+                            notify("Already own: " + data?.purchase_receipt_info?.line_items[0]?.line_item_description);
                             return;
                         case 14:
                             notify("Invalid key: " + _key);
                             return;
                         case 15:
-                            notify("Somebody already activated this code for: " + data.purchase_receipt_info.line_items[0].line_item_description);
+                            notify("Somebody already activated this code for: " + data?.purchase_receipt_info?.line_items[0]?.line_item_description);
                             return;
                         case 13:
-                            notify("Regional restrictions: " + data.purchase_receipt_info.line_items[0].line_item_description);
+                            notify("Regional restrictions: " + data?.purchase_receipt_info?.line_items[0]?.line_item_description);
                             return;
                         case 24:
-                            notify("Missing base game: " + data.purchase_receipt_info.line_items[0].line_item_description);
+                            notify("Missing base game: " + data?.purchase_receipt_info?.line_items[0]?.line_item_description);
                             return;
                         case 36:
                             notify("Need a PS3?"); // ?
@@ -115,7 +115,7 @@ function activatekey(info) {
                             notify("This is the recharge code!"); // ?
                             return;
                         default:
-                            notify("purchase_result_details: " + data.purchase_result_details);
+                            notify("purchase_result_details: " + data?.purchase_result_details);
                             break;
                     }
                 })
