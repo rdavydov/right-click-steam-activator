@@ -1,19 +1,16 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Right-click Steam Activator",
   "description": "Use the right-click menu to activate selected Steam key",
-  "version": "2.2",
+  "version": "2.3",
   "permissions": [
     "contextMenus",
     "cookies",
-    "https://store.steampowered.com/",
     "storage",
     "notifications"
   ],
   "background": {
-    "scripts": [
-      "right-click-steam-activator.js"
-    ]
+    "service_worker": "right-click-steam-activator.js"
   },
   "minimum_chrome_version": "88",
   "icons": {
@@ -32,5 +29,19 @@
   "host_permissions": [
     "http://*/",
     "https://*/"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "images/ico16.png",
+        "images/ico32.png",
+        "images/ico48.png",
+        "images/ico64.png",
+        "images/ico128.png"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
   ]
 }

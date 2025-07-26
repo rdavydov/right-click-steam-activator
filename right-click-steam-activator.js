@@ -1,11 +1,11 @@
 function notify(message) {
     console.log("Notifying user: ", message);
     chrome.notifications.create({
-        "type": "basic",
-        "iconUrl": "images/ico128.png",
+        type: "basic",
+        iconUrl: chrome.runtime.getURL("images/ico128.png"), // manifest v3: use runtime.getURL
         // "iconUrl": browser.extension.getURL("images/ico128.png"),
-        "title": "Right-click Steam Activator",
-        "message": message
+        title: "Right-click Steam Activator",
+        message: typeof message === "string" ? message : (message?.message || String(message))
     });
 }
 
@@ -132,7 +132,7 @@ function activatekey(info) {
     }
 }
 
-chrome.contextMenus.removeAll(function () {
+chrome.runtime.onInstalled.addListener(() => {
     chrome.contextMenus.create({
         id: "ActSteamKey",
         title: "Activate: %s",
@@ -140,8 +140,8 @@ chrome.contextMenus.removeAll(function () {
     });
 });
 
-chrome.contextMenus.onClicked.addListener(function (info) {
-    if (info.menuItemId == "ActSteamKey") {
+chrome.contextMenus.onClicked.addListener((info, tab) => {
+    if (info.menuItemId === "ActSteamKey") {
         activatekey(info);
     }
 });
