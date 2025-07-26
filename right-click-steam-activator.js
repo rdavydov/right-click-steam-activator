@@ -1,3 +1,14 @@
+// manifest v3: обработчик сообщений для установки cookies из options page
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.action === "setCookie" && message.cookie) {
+        chrome.cookies.set(message.cookie, (cookie) => {
+            sendResponse({ success: !!cookie });
+        });
+        // Важно: вернуть true для асинхронного ответа
+        return true;
+    }
+    // ...можно добавить другие действия...
+});
 function notify(message) {
     console.log("Notifying user: ", message);
     chrome.notifications.create({

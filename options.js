@@ -11,27 +11,35 @@ optionsForm.addEventListener('submit', (event) => {
 
     if (sessionid && steamLoginSecure) {
         chrome.storage.sync.set({ sessionid, steamLoginSecure }, () => {
+            // manifest v3: cookies API не доступен напрямую из options page
+            // Передаем данные в service worker через messaging
             if (sessionid) {
-                chrome.cookies.set({
-                    url: "https://store.steampowered.com/",
-                    name: "sessionid",
-                    value: sessionid,
-                    secure: true,
-                    httpOnly: true
-                }, () => {
-                    console.log("sessionid cookie value is set");
+                chrome.runtime.sendMessage({
+                    action: "setCookie",
+                    cookie: {
+                        url: "https://store.steampowered.com/",
+                        name: "sessionid",
+                        value: sessionid,
+                        secure: true,
+                        httpOnly: true
+                    }
+                }, (response) => {
+                    console.log("sessionid cookie value is set (via service worker)");
                 });
             }
 
             if (steamLoginSecure) {
-                chrome.cookies.set({
-                    url: "https://store.steampowered.com/",
-                    name: "steamLoginSecure",
-                    value: steamLoginSecure,
-                    secure: true,
-                    httpOnly: true
-                }, () => {
-                    console.log("steamLoginSecure cookie value is set");
+                chrome.runtime.sendMessage({
+                    action: "setCookie",
+                    cookie: {
+                        url: "https://store.steampowered.com/",
+                        name: "steamLoginSecure",
+                        value: steamLoginSecure,
+                        secure: true,
+                        httpOnly: true
+                    }
+                }, (response) => {
+                    console.log("steamLoginSecure cookie value is set (via service worker)");
                 });
             }
 
